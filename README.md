@@ -1,4 +1,4 @@
-# Matriz-de-correlacion-Crypto![image]
+# Matriz-de-correlacion-Crypto
 
 Mapa de calor para las Cryptomonedas de mayor capitalización del mercado, con el fin de observar el grado de correlación entre las mismas. Los datos se extraen de https://www.cryptocompare.com/
 
