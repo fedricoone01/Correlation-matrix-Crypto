@@ -9,7 +9,7 @@ import requests
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-api_key = "5a76819b73a11404fc2131dea896e8e17da287880bae8c32f7789cf5da37ceb1"
+api_key = ""
 
 monedas = ["BTC","ETH","XRP","LUNA","BNB","SOL","AVAX","ADA","DOT","DOGE","MATIC","LINK","SHIB"]
 
