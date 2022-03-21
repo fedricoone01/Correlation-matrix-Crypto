@@ -9,13 +9,13 @@ import requests
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+
 api_key = ""
 
-monedas = ["BTC","ETH","XRP","LUNA","BNB","SOL","AVAX","ADA","DOT","DOGE","MATIC","LINK","SHIB"]
+coins = ["BTC","ETH","XRP","LUNA","BNB","SOL","AVAX","ADA","DOT","DOGE","MATIC","LINK","SHIB"]
 
-
-#Matriz de correlación
-def graficaCorr(dfCorr, title=""):
+#Correlation matrix
+def graphic(dfCorr, title=""):
     
     fig=plt.figure(figsize=(14,9))
     plt.matshow(dfCorr, fignum=fig.number, cmap='YlGn')
@@ -24,7 +24,7 @@ def graficaCorr(dfCorr, title=""):
 
     cb=plt.colorbar(orientation="vertical", label="Correlación")
     cb.ax.tick_params(labelsize=15)
-    plt.title("  Matriz de correlación - Cryptomonedas de mayor capitalización", fontsize=23, y=1.15,fontweight="bold", C="red")
+    plt.title("  Matriz de correlación - Cryptocoins de mayor capitalización", fontsize=23, y=1.15,fontweight="bold", C="red")
     
     ax = plt.gca()
     ax.set_xticks(np.arange(-.5, len(dfCorr), 1), minor=True);
@@ -42,10 +42,9 @@ def graficaCorr(dfCorr, title=""):
     plt.show()
 
 
-#Datos históricos
+#Historical data from cryptocompare
 def histoDay(e, fsym, tsym, toTs=None, limit=360, aggregate=1, allData="false"):
     url = "https://min-api.cryptocompare.com/data/v2/histoday"
-    
     params = {"api_key" : api_key, "e":e, "fsym":fsym, "tsym":tsym, "allData":allData, 
               "Tots":toTs, "limit":limit, "aggregate":aggregate}
     r = requests.get(url, params=params)
@@ -55,19 +54,18 @@ def histoDay(e, fsym, tsym, toTs=None, limit=360, aggregate=1, allData="false"):
     df = df.set_index("time").drop(["conversionType","conversionSymbol","high","low","open","volumefrom","volumeto"], axis=1)
     return df
 
-#Armado del DataFrame
+#DataFrame
 lista = []
 tabla = pd.DataFrame()
-
-for i in monedas:
+for i in coins:
     lista.append(histoDay("CCCAGG", i, "USD"))
 todo = pd.concat(lista, axis=1)
-todo.columns=monedas
+todo.columns=coins
 print(todo)
 
 
-#Invocamos la función para graficar el DataFrame
-graficaCorr(todo.corr())
+#We call the function to graph
+graphic(todo.corr())
 
         
     
