@@ -1,4 +1,4 @@
-# Matriz-de-correlacion-Crypto
+# Correlation Matrix - Highest Cap Cryptocoins
 
 Heat map for the Cryptocurrencies with the largest market capitalization, in order to observe the degree of connection between them. Data is pulled from https://www.cryptocompare.com/
 
