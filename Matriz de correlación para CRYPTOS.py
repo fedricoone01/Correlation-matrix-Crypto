@@ -24,7 +24,7 @@ def graph(dfCorr, title=""):
 
     cb = plt.colorbar(orientation="vertical", label="Correlación")
     cb.ax.tick_params(labelsize=15)
-    plt.title("  Matriz de correlación - Cryptocoins de mayor capitalización", fontsize=23, y=1.15,fontweight="bold", C="red")
+    plt.title("  Correlation Matrix - Highest Cap Cryptocoins", fontsize=23, y=1.15,fontweight="bold", C="red")
     
     ax = plt.gca()
     ax.set_xticks(np.arange(-.5, len(dfCorr), 1), minor=True);
